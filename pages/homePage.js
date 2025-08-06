@@ -1,21 +1,25 @@
-const { expect } = require('@playwright/test');
+const { expect } = require("@playwright/test");
 
 class HomePage {
-    
+  
+  /**
+   *
+   * @param {import ('@playwright/test').Page} page
+   */
+
   constructor(page) {
     this.page = page;
-    this.manageOption = page.locator("//span[normalize-space()='Manage']")
+    this.manageOption = page.locator("//span[normalize-space()='Manage']");
     this.menu = page.locator("//img[@alt='menu']");
     this.signOut = page.locator("//button[normalize-space()='Sign out']");
-   
   }
 
-  async verifyManagaOption(){
+  async verifyManagaOption() {
     await expect(this.manageOption).toBeVisible();
   }
 
   // ... methods
-  async logoutFromApplication(){
+  async logoutFromApplication() {
     await this.menu.click();
     await this.signOut.click();
     // await this.page.click(this.signOut);
